@@ -3,119 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safa Elmzouak | Portfolio</title>
+<title>Safa Portfolio V1</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+:root{
+  --bg:#0f0720;
+  --pink:#ff78b6;
+  --orange:#ff6a00;
+  --card:#111018;
+  --accent: linear-gradient(135deg,var(--pink),var(--orange));
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial;}
+body{background:linear-gradient(180deg,#0f0720,#100217,#1a081a);color:#fff;scroll-behavior:smooth;}
+
+header{position:sticky;top:0;background:rgba(15,7,32,0.6);backdrop-filter:blur(6px);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;z-index:50;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.6px;}
+.logo .mark{width:36px;height:36px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#111;}
+nav{display:flex;gap:12px}
+nav a{padding:8px 12px;border-radius:8px;font-weight:600;opacity:0.9;color:#fff;text-decoration:none;}
+nav a:hover{background:rgba(255,255,255,0.03);}
+main{max-width:1000px;margin:30px auto;padding:0 18px;}
+.hero{min-height:64vh;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero .left{flex:1;}
+h1{font-size:clamp(28px,6vw,48px);margin-bottom:10px;line-height:1.02;}
+p.lead{opacity:0.9;margin-bottom:18px;}
+.cta{display:flex;gap:12px;margin-bottom:20px;}
+.btn{background:var(--accent);padding:10px 16px;border-radius:12px;font-weight:700;color:#110614;text-decoration:none;}
+.secondary{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px;}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+section{padding:46px 0;border-top:1px dashed rgba(255,255,255,0.03);}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.section-title h2{margin:0;}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.project{border-radius:12px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2));min-height:140px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;}
+.project:hover{transform:translateY(-6px);transition:transform .25s;}
+.project img{width:100%;border-radius:8px;height:110px;object-fit:cover;}
+.contact-form{display:grid;grid-template-columns:1fr;gap:12px;}
+input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:#fff;}
+footer{padding:18px;text-align:center;opacity:0.7;}
+
+/* Floating Cat Character */
+#floating-character{
+  position:fixed;
+  bottom:60px;
+  right:60px;
+  width:250px;
+  z-index:9999;
+  pointer-events:auto;
+  transition:transform 0.2s ease, bottom 0.2s ease, right 0.2s ease;
+  animation: floatCat 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatCat {
+  from {transform: translateY(0);}
+  to {transform: translateY(-12px);}
+}
+
+/* Star */
+.star{position:fixed;z-index:70;pointer-events:none;width:8px;height:8px;border-radius:50%;opacity:0;transform:translateY(0);}
+
+@keyframes explode{to{transform:scale(1.6) rotate(-12deg);opacity:0}}
+@keyframes fall{from{transform:translateY(-20vh) scale(0.6);opacity:1}to{transform:translateY(120vh) scale(0.2);opacity:0}}
+
+</style>
 </head>
 <body>
-
 <header>
-  <div class="logo">SF • SAFA ELMZOUAK</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#languages">Languages</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="logo"><div class="mark">SF</div>SAFA ELMZOUAK</div>
+<nav><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
 </header>
 
 <main>
-
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>A results-driven digital marketer skilled in performance analysis, ad campaign management, SEO writing, research, and brand alignment. Passionate about helping brands grow, I combine creativity, strategy, and data-driven insights to deliver impactful marketing solutions. I’m eager to contribute to dynamic teams and drive meaningful results.</p>
-  <div class="info-tabs">
-    <span>📞 +212 610 80 29 23</span>
-    <span>✉ selmzouak.contact@gmail.com</span>
-    <span>📍 Agadir, Morocco</span>
-    <span>🎂 25 years</span>
-  </div>
+<section id="home" class="hero">
+<div class="left">
+<h1>Hi, I'm Safa — Personal Portfolio</h1>
+<p class="lead">I design, create content & build meaningful digital experiences. Scroll to explore my work.</p>
+<div class="cta"><a class="btn" href="#projects">See projects</a><a class="secondary" href="#contact">Contact me</a></div>
+</div>
 </section>
 
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Tayyurt Surf School</h3>
-      <p>Role: Digital Marketing Specialist</p>
-      <a href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_69cb025933f84e9ebf356685c454b14a.pdf" target="_blank">View Project Proof (PDF)</a>
-    </div>
-    <div class="project-card">
-      <h3>Buildup Marketing Agency</h3>
-      <p>Role: Social Media Manager</p>
-      <a href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_907e324ffc8d45c080064c8dc1763dd0.pdf" target="_blank">View Project Proof (PDF)</a>
-    </div>
-    <div class="project-card">
-      <h3>Association la Défi</h3>
-      <p>Role: Social Media Manager</p>
-    </div>
-    <div class="project-card">
-      <h3>Jardin Magique</h3>
-      <p>Role: Digital Marketing Specialist</p>
-      <a href="https://www.facebook.com/share/1KAMnqGNsH/" target="_blank">View Live Page</a>
-    </div>
-    <div class="project-card">
-      <h3>Hamza School</h3>
-      <p>Role: Digital Marketing Specialist</p>
-      <a href="https://www.facebook.com/share/1EXwJZLBx9/" target="_blank">View Live Page</a>
-    </div>
-    <div class="project-card">
-      <h3>Game Development Projects</h3>
-      <p>Unity & C# Prototypes – Early projects exploring design</p>
-      <a href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_9c6a51c2a59146fb854a9614b5c2c493.pdf" target="_blank">View Project Proof (PDF)</a>
-      <a href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/IMG-20250430-WA0008.pdf" target="_blank">Game Screenshots Proof</a>
-    </div>
-  </div>
+<section id="about">
+<div class="section-title"><h2>About</h2></div>
+<div class="card">
+<p>A results-driven digital marketer skilled in performance analysis, ad campaign management, SEO writing, research and planning, and brand alignment. Passionate about helping brands grow, I combine creativity, strategy, and data-driven insights to deliver impactful marketing solutions. I’m eager to contribute to dynamic teams and drive meaningful results.</p>
+<ul>
+<li><strong>Phone:</strong> +212 610 80 29 23</li>
+<li><strong>Email:</strong> selmzouak.contact@gmail.com</li>
+<li><strong>Location:</strong> Agadir, Morocco</li>
+<li><strong>Age:</strong> 25</li>
+<li><strong>Languages:</strong> Arabic - Native, Tamazight - Native, French - Intermediate, English - Fluent</li>
+</ul>
+</div>
 </section>
 
-<section id="experience" class="section">
-  <h2>Work Experience</h2>
-  <ul class="timeline-list">
-    <li><strong>2025 – Present:</strong> Customer Service Representative – Concentrix</li>
-    <li><strong>2024 – 2025:</strong> Digital Marketing Specialist – Agency Buildup, Agadir</li>
-    <li><strong>2021 – 2022:</strong> Front Office Manager – Tazarzit Beauty Salon, Agadir</li>
-    <li><strong>2019 – 2020:</strong> Cashier – Stardipan, Agadir</li>
-  </ul>
+<section id="projects">
+<div class="section-title"><h2>Projects</h2></div>
+<div class="projects">
+<a class="project" href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_69cb025933f84e9ebf356685c454b14a.pdf" target="_blank"><strong>Tayyurt Surf School</strong><p>Digital Marketing Specialist</p></a>
+
+<a class="project" href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6edba1e5b9081e231b0e0/proofs/8f4f25_907e324ffc8d45c080064c8dc1763dd0.pdf" target="_blank"><strong>Buildup Marketing Agency</strong><p>Social Media Manager</p></a>
+
+<a class="project"><strong>Association la Défi</strong><p>Social Media Manager</p></a>
+
+<a class="project" href="https://www.facebook.com/share/1KAMnqGNsH/" target="_blank"><strong>Jardin Magique</strong><p>Digital Marketing Specialist</p></a>
+
+<a class="project" href="https://www.facebook.com/share/1EXwJZLBx9/" target="_blank"><strong>Hamza School</strong><p>Digital Marketing Specialist</p></a>
+
+<a class="project" href="https://github.com/sbixla00-111/portfoliosf/blob/255bd239a3714c8f6edba1e5b9081e231b0e0/proofs/IMG-20250430-WA0008.pdf" target="_blank"><strong>Game Development</strong><p>Unity & C# Prototypes</p></a>
+
+</div>
 </section>
 
-<section id="education" class="section">
-  <h2>Education</h2>
-  <ul class="timeline-list">
-    <li><strong>2019 – 2021:</strong> Baccalaureat in Physical Sciences – Al Mayamine School, Agadir</li>
-    <li><strong>2021 – Present:</strong> Bachelor in Economics and Management – Ibn Zohr University, Agadir</li>
-    <li><strong>2024 – Present:</strong> Game Development – Learning Unity & C# Prototypes</li>
-  </ul>
+<section id="contact">
+<div class="section-title"><h2>Contact</h2></div>
+<div class="card">
+<p>Phone: +212 610 80 29 23</p>
+<p>Email: selmzouak.contact@gmail.com</p>
+<p>Location: Agadir, Morocco</p>
+</div>
 </section>
-
-<section id="languages" class="section">
-  <h2>Languages</h2>
-  <ul>
-    <li>Arabic – Native</li>
-    <li>Tamazight – Native</li>
-    <li>French – Intermediate</li>
-    <li>English – Fluent</li>
-  </ul>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <ul>
-    <li>Phone: +212 610 80 29 23</li>
-    <li>Email: selmzouak.contact@gmail.com</li>
-    <li>Location: Agadir, Morocco</li>
-  </ul>
-</section>
-
 </main>
 
-<footer>
-  <p>&copy; 2025 Safa Elmzouak. All Rights Reserved.</p>
-</footer>
+<footer>Made with ❤️ — Safa • Scroll for fun</footer>
 
 <img id="floating-character" src="images/pixel_safa_cat.gif" alt="Safa Cat">
 
-<script src="script.js"></script>
+<script>
+const cat = document.getElementById('floating-character');
+let follow = true;
+
+// Scroll follow
+function updateCat(){
+    if(!follow) return;
+    const scrollY = window.scrollY || window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? scrollY / docHeight : 0;
+    cat.style.bottom = 60 + percent*200 + 'px';
+    cat.style.right = 60 + percent*200 + 'px';
+}
+function loop(){updateCat();requestAnimationFrame(loop);} loop();
+window.addEventListener('scroll', ()=>{follow=true});
+
+// Tap animation sequence
+cat.addEventListener('click',()=>{
+    follow=false;
+    cat.src='images/dizzy.gif'; // arms on head
+    setTimeout(()=>{cat.src='images/angry.gif';},3000);
+    setTimeout(()=>{cat.src='images/smile.gif'; createStars(10000);},9000);
+    setTimeout(()=>{follow=true; cat.src='images/pixel_safa_cat.gif';},20000);
+});
+
+function randomBetween(a,b){return a+Math.random()*(b-a);}
+function createStars(duration){
+    const count=Math.min(80,Math.floor(window.innerWidth/8));
+    const stars=[];
+    for(let i=0;i<count;i++){
+        const el=document.createElement('div');
+        el.className='star';
+        const size=randomBetween(6,14);
+        el.style.width=size+'px';
+        el.style.height=size+'px';
+        el.style.left=randomBetween(0,window.innerWidth)+'px';
+        el.style.top=(-randomBetween(0,window.innerHeight*0.2))+'px';
+        const colors=['#ffd966','#ff78b6','#ffb886'];
+        el.style.background=colors[Math.floor(Math.random()*colors.length)];
+        el.style.opacity='1';
+        el.style.borderRadius='50%';
+        el.style.animation=`fall ${randomBetween(1.6,3.2)}s linear forwards`;
+        document.body.appendChild(el);
+        stars.push(el);
+    }
+    setTimeout(()=>{stars.forEach(s=>s.remove());},duration+1200);
+}
+</script>
+
 </body>
-  </html>
+</html>
