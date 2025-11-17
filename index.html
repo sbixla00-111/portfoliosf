@@ -3,31 +3,39 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Safa Elmzouak — Portfolio</title>
+<title>Safa Elmzouak — Portfolio (Fixed)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <div class="container header-inner">
-    <div class="logo"><span class="mark">SF</span> SAFA ELMZOUAK</div>
+    <div class="brand">
+      <span class="mark">SF</span>
+      <div class="brand-text">
+        <div class="name">SAFA ELMZOUAK</div>
+        <div class="role">Digital Marketer · Aspiring Game Dev</div>
+      </div>
+    </div>
 
-    <!-- 3-dots menu -->
-    <div class="menu-dot" id="menuToggle" aria-label="Menu" title="Menu">•••</div>
-
-    <nav class="nav" id="mainNav">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#languages">Languages</a>
-      <a href="#contact">Contact</a>
+    <!-- modern tab bar (Option 3) -->
+    <nav class="top-nav" id="topNav">
+      <button class="tab" data-target="#about">About</button>
+      <button class="tab" data-target="#projects">Projects</button>
+      <button class="tab" data-target="#experience">Experience</button>
+      <button class="tab" data-target="#education">Education</button>
+      <button class="tab" data-target="#languages">Languages</button>
+      <button class="tab" data-target="#contact">Contact</button>
     </nav>
+
+    <!-- mobile menu (3 dots) -->
+    <button id="menuBtn" class="menu-dot" aria-label="Open menu">•••</button>
   </div>
 </header>
 
 <main class="container">
+
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="section-title"><h2>About</h2></div>
@@ -49,43 +57,43 @@
     <div class="projects-grid">
       <article class="project">
         <h3>Tayyurt Surf School</h3>
-        <p>Digital Marketing Specialist</p>
+        <p class="muted">Digital Marketing Specialist</p>
         <a class="btn" href="https://raw.githubusercontent.com/sbixla00-111/portfoliosf/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_69cb025933f84e9ebf356685c454b14a.pdf" target="_blank" rel="noopener">View PDF</a>
       </article>
 
       <article class="project">
         <h3>Buildup Marketing Agency</h3>
-        <p>Social Media Manager</p>
+        <p class="muted">Social Media Manager</p>
         <a class="btn" href="https://raw.githubusercontent.com/sbixla00-111/portfoliosf/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_907e324ffc8d45c080064c8dc1763dd0.pdf" target="_blank" rel="noopener">View PDF</a>
       </article>
 
       <article class="project">
         <h3>Association la Défi</h3>
-        <p>Social Media Manager</p>
+        <p class="muted">Social Media Manager</p>
         <a class="btn" href="https://raw.githubusercontent.com/sbixla00-111/portfoliosf/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/8f4f25_9c6a51c2a59146fb854a9614b5c2c493.pdf" target="_blank" rel="noopener">View PDF</a>
       </article>
 
       <article class="project">
         <h3>Institution Jardin Magique</h3>
-        <p>Digital Marketing Specialist</p>
+        <p class="muted">Digital Marketing Specialist</p>
         <a class="facebook-btn" href="https://www.facebook.com/share/1KAMnqGNsH/" target="_blank" rel="noopener">Live Page</a>
       </article>
 
       <article class="project">
         <h3>Hamza School</h3>
-        <p>Digital Marketing Specialist</p>
+        <p class="muted">Digital Marketing Specialist</p>
         <a class="facebook-btn" href="https://www.facebook.com/share/1EXwJZLBx9/" target="_blank" rel="noopener">Live Page</a>
       </article>
 
       <article class="project">
         <h3>2D Game Development</h3>
-        <p>Early Game Prototype</p>
+        <p class="muted">Early Game Prototype</p>
         <a class="btn" href="https://raw.githubusercontent.com/sbixla00-111/portfoliosf/255bd239a3714c8f6cf6edba1e5b9081e231b0e0/proofs/IMG-20250430-WA0008.pdf" target="_blank" rel="noopener">View PDF</a>
       </article>
     </div>
   </section>
 
-  <!-- EXPERIENCE (timeline style with spacing) -->
+  <!-- EXPERIENCE timeline -->
   <section id="experience" class="section">
     <div class="section-title"><h2>Work Experience</h2></div>
     <div class="timeline">
@@ -111,7 +119,7 @@
     </div>
   </section>
 
-  <!-- EDUCATION (timeline spacing) -->
+  <!-- EDUCATION timeline -->
   <section id="education" class="section">
     <div class="section-title"><h2>Education</h2></div>
     <div class="timeline">
@@ -139,8 +147,8 @@
       <ul class="language-list">
         <li><strong>Tamazight:</strong> Native</li>
         <li><strong>Arabic:</strong> Native</li>
-        <li><strong>French:</strong> Intermediate</li>
         <li><strong>English:</strong> Fluent</li>
+        <li><strong>French:</strong> Intermediate</li>
       </ul>
     </div>
   </section>
@@ -148,7 +156,26 @@
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="section-title"><h2>Contact</h2></div>
-    <div class="card">
-      <ul class="contact-list">
+    <div class="card contact-card">
+      <ul>
         <li><strong>Phone:</strong> +212 610 80 29 23</li>
-        <li><strong>Email:</strong> <a href="mailto:selmzouak.contact@gmail.com">selm
+        <li><strong>Email:</strong> <a href="mailto:selmzouak.contact@gmail.com">selmzouak.contact@gmail.com</a></li>
+        <li><strong>Location:</strong> Agadir, Morocco</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Made with ❤️ — Safa Elmzouak</p>
+  </div>
+</footer>
+
+<!-- Floating cat (spaceship pixel) on right -->
+<img id="nyan" src="images/pixel_safa_cat.gif" alt="Safa Cat">
+
+<script src="script.js"></script>
+</body>
+          </html>
