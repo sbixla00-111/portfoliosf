@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,18 +41,18 @@ section{padding:46px 0;border-top:1px dashed rgba(255,255,255,0.03);}
 .contact-form{display:grid;grid-template-columns:1fr;gap:12px;}
 input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:#fff;}
 footer{padding:18px;text-align:center;opacity:0.7;}
-#nyan{position:fixed;right:12px;bottom:80px;z-index:80;width:88px;height:48px;pointer-events:none;transition:transform .2s linear,right .2s linear,bottom .2s linear;}
+#nyan{position:fixed;z-index:1000;pointer-events:auto;cursor:pointer;transition:transform .2s linear, top .1s linear, left .1s linear;}
 .star{position:fixed;z-index:70;pointer-events:none;width:8px;height:8px;border-radius:50%;opacity:0;transform:translateY(0);}
-@keyframes explode{to{transform:scale(1.6) rotate(-12deg);opacity:0}}
-@keyframes fall{from{transform:translateY(-20vh) scale(0.6);opacity:1}to{transform:translateY(120vh) scale(0.2);opacity:0}}
-@media(max-width:720px){.hero{flex-direction:column;align-items:flex-start} #nyan{width:64px;height:36px;bottom:60px;right:12px;}}
+@media(max-width:720px){.hero{flex-direction:column;align-items:flex-start} #nyan{width:100px;}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo"><div class="mark">SF</div>SAFA ELMZOUAK</div>
 <nav><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
 </header>
+
 <main>
 <section id="home" class="hero">
 <div class="left">
@@ -64,10 +65,12 @@ footer{padding:18px;text-align:center;opacity:0.7;}
 </div>
 </div>
 </section>
+
 <section id="about">
 <div class="section-title"><h2>About</h2></div>
 <div class="card"><p>I'm a digital marketer & content creator passionate about building memorable digital experiences. I combine creativity with analytics to deliver measurable results.</p></div>
 </section>
+
 <section id="projects">
 <div class="section-title"><h2>Projects</h2></div>
 <div class="projects">
@@ -76,6 +79,7 @@ footer{padding:18px;text-align:center;opacity:0.7;}
 <a class="project"><strong>Project 3</strong><p>Landing pages + conversion optimization.</p></a>
 </div>
 </section>
+
 <section id="contact">
 <div class="section-title"><h2>Contact</h2></div>
 <div class="card">
@@ -88,17 +92,186 @@ footer{padding:18px;text-align:center;opacity:0.7;}
 </div>
 </section>
 </main>
+
 <footer>Made with ❤️ — Safa • Scroll for fun</footer>
+
+<!-- Floating Cat -->
 <img id="nyan" src="images/pixel_safa_cat.gif" alt="Safa Nyan Cat">
+
+<!-- Sound -->
+<audio id="nyanSound" src="sounds/nyanTap.mp3" preload="auto"></audio>
+
 <script>
-const nyan=document.getElementById('nyan');
-let follow=true,lastScroll=Date.now(),idle=null,inShow=false;
-function updateNyan(){if(!follow)return;const s=window.scrollY||window.pageYOffset,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?s/d:0;b=80-p*40;r=12+p*80;nyan.style.bottom=b+'px';nyan.style.right=r+'px';}
-function loop(){updateNyan();requestAnimationFrame(loop);} loop();
-function onScroll(){lastScroll=Date.now();if(inShow)return;if(idle)clearTimeout(idle);follow=true;idle=setTimeout(()=>{inShow=true;follow=false;nyan.classList.add('explode');setTimeout(()=>{nyan.classList.remove('explode');createStars(5000)},600);setTimeout(()=>{inShow=false;follow=true},5600);},5000);}
-window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-function randomBetween(a,b){return a+Math.random()*(b-a);}
-function createStars(duration){const count=Math.min(80,Math.floor(window.innerWidth/8));const stars=[];for(let i=0;i<count;i++){const el=document.createElement('div');el.className='star';const size=randomBetween(6,14);el.style.width=size+'px';el.style.height=size+'px';el.style.left=randomBetween(0,window.innerWidth)+'px';el.style.top=(-randomBetween(0,window.innerHeight*0.2))+'px';const colors=['#ffd966','#ff78b6','#ffb886'];el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.opacity='1';el.style.borderRadius='50%';el.style.pointerEvents='none';el.style.zIndex=70;el.style.animation=`fall ${randomBetween(1.6,3.2)}s linear forwards`;document.body.appendChild(el);stars.push(el);} setTimeout(()=>{stars.forEach(s=>s.remove());},duration+1200);}
+// ---------------- Variables ----------------
+const nyan = document.getElementById('nyan');
+const sound = document.getElementById('nyanSound');
+let posX = window.innerWidth/2, posY = window.innerHeight/2;
+let velocityX = (Math.random()-0.5)*2, velocityY = (Math.random()-0.5)*2;
+let lastMoveTime = Date.now(), explosionActive=false;
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+if(isMobile){ nyan.style.width='100px'; velocityX*=0.6; velocityY*=0.6; }
+else nyan.style.width='140px';
+
+// ---------------- Floating motion ----------------
+function updateNyan(){
+    if(!explosionActive){
+        posX += velocityX; posY += velocityY;
+        const w=nyan.offsetWidth,h=nyan.offsetHeight;
+        if(posX<0 || posX+w>window.innerWidth) velocityX*=-1;
+        if(posY<0 || posY+h>window.innerHeight) velocityY*=-1;
+        nyan.style.left = posX+'px';
+        nyan.style.top = posY+'px';
+        createTrail();
+    }
+    requestAnimationFrame(updateNyan);
+}
+updateNyan();
+
+// ---------------- Random velocity ----------------
+setInterval(()=>{
+    if(!explosionActive){
+        velocityX=(Math.random()-0.5)*(isMobile?1.2:2);
+        velocityY=(Math.random()-0.5)*(isMobile?1.2:2);
+        lastMoveTime=Date.now();
+    }
+},2000);
+
+// ---------------- Idle explosion ----------------
+function checkIdle(){
+    if(!explosionActive && (Date.now()-lastMoveTime>5000)) triggerExplosion();
+    requestAnimationFrame(checkIdle);
+}
+checkIdle();
+
+function triggerExplosion(){
+    explosionActive=true;
+    nyan.style.transform="scale(2.2) rotate(20deg)";
+    setTimeout(()=>{ nyan.style.transform="scale(1) rotate(0deg)"; },600);
+    createStars(10000);
+    setTimeout(()=>{ explosionActive=false; },10600);
+}
+
+// ---------------- Sparkle trail ----------------
+function randomBetween(min,max){ return min+Math.random()*(max-min); }
+function createTrail(){
+    const trail=document.createElement('div');
+    const size=randomBetween(3,6);
+    trail.style.width=trail.style.height=size+'px';
+    trail.style.position='fixed';
+    trail.style.left = posX+nyan.offsetWidth/2+randomBetween(-10,10)+'px';
+    trail.style.top = posY+nyan.offsetHeight/2+randomBetween(-10,10)+'px';
+    trail.style.background=['#fff','#ffeb8a','#ff78b6','#a6fffb'][Math.floor(Math.random()*4)];
+    trail.style.borderRadius='50%';
+    trail.style.opacity='0.8';
+    trail.style.pointerEvents='none';
+    trail.style.zIndex='80';
+    trail.style.transition='opacity 0.8s ease-out, transform 0.8s linear';
+    document.body.appendChild(trail);
+    requestAnimationFrame(()=>{
+        trail.style.opacity='0';
+        trail.style.transform=`translateY(${randomBetween(-20,20)}px) translateX(${randomBetween(-20,20)}px)`;
+    });
+    setTimeout(()=>{ trail.remove(); },800);
+}
+
+// ---------------- Star shower ----------------
+function createStars(duration){
+    const count=Math.min(100, Math.floor(window.innerWidth/8));
+    const stars=[];
+    for(let i=0;i<count;i++){
+        const s=document.createElement('div');
+        s.style.width=s.style.height=randomBetween(6,14)+'px';
+        s.style.left=randomBetween(0,window.innerWidth)+'px';
+        s.style.top=(-randomBetween(0,window.innerHeight*0.2))+'px';
+        const colors=['#ffd966','#ff78b6','#ffb886','#a6fffb','#c0a0ff'];
+        s.style.background=colors[Math.floor(Math.random()*colors.length)];
+        s.style.borderRadius='50%';
+        s.style.position='fixed';
+        s.style.zIndex='70';
+        s.style.pointerEvents='none';
+        s.style.opacity='1';
+        s.style.animation=`fall ${randomBetween(1.6,3.2)}s linear forwards`;
+        document.body.appendChild(s); stars.push(s);
+    }
+    setTimeout(()=>{ stars.forEach(star=>star.remove()); },duration+1200);
+}
+
+// ---------------- Tap dizzy effect ----------------
+nyan.addEventListener('click', ()=>{
+    if(explosionActive) return;
+    explosionActive=true;
+    sound.currentTime=0;
+    sound.play();
+
+    // Wiggle
+    let rotate=0;
+    let wiggleInterval = setInterval(()=>{
+        rotate = rotate===10?-10:10;
+        nyan.style.transform = `rotate(${rotate}deg) scale(1.1)`;
+    },100);
+
+    // Tears
+    const tears=[];
+    for(let i=0;i<3;i++){
+        const t=document.createElement('div');
+        t.style.width=t.style.height='6px';
+        t.style.position='fixed';
+        t.style.background='aqua';
+        t.style.borderRadius='50%';
+        t.style.left=posX+nyan.offsetWidth/2+(i*5-5)+'px';
+        t.style.top=posY+nyan.offsetHeight-5+'px';
+        t.style.opacity='0.8';
+        t.style.zIndex='100';
+        document.body.appendChild(t);
+        tears.push(t);
+        setTimeout(()=>{ t.style.transition='top 1s, opacity 1s'; t.style.top=(posY+nyan.offsetHeight+30)+'px'; t.style.opacity='0'; },50);
+    }
+
+    // Dizzy stars
+    const dizzyStars=[];
+    const starCount=4;
+    for(let i=0;i<starCount;i++){
+        const s=document.createElement('div');
+        s.style.width=s.style.height='6px';
+        s.style.position='fixed';
+        s.style.background='yellow';
+        s.style.borderRadius='50%';
+        s.style.left=posX+nyan.offsetWidth/2+'px';
+        s.style.top=posY-10+'px';
+        s.style.opacity='1';
+        s.style.zIndex='100';
+        document.body.appendChild(s);
+        dizzyStars.push(s);
+    }
+    let angle=0;
+    const spinInterval = setInterval(()=>{
+        angle+=15;
+        dizzyStars.forEach((s,i)=>{
+            const rad=angle + i*90;
+            s.style.left = posX+nyan.offsetWidth/2 + 20*Math.cos(rad*Math.PI/180)+'px';
+            s.style.top = posY-10 + 20*Math.sin(rad*Math.PI/180)+'px';
+        });
+    },50);
+
+    // Reset after 2s
+    setTimeout(()=>{
+        clearInterval(wiggleInterval);
+        clearInterval(spinInterval);
+        nyan.style.transform='scale(1) rotate(0deg)';
+        tears.forEach(t=>t.remove());
+        dizzyStars.forEach(s=>s.remove());
+        explosionActive=false;
+    },2000);
+});
+
+// ---------------- Keyframes ----------------
+let style=document.createElement('style');
+style.innerHTML=`
+@keyframes fall {
+  0% { transform: translateY(0) scale(0.6); opacity:1 }
+  100% { transform: translateY(120vh) scale(0.2); opacity:0 }
+}`;
+document.head.appendChild(style);
 </script>
 </body>
-  </html>
+</html>
