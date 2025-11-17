@@ -1,33 +1,36 @@
 const cat = document.getElementById("floating-character");
 
-// soft floating animation
-let floatY = 0, direction = 1;
-function floatLoop(){
-    floatY += 0.2 * direction;
-    if(floatY > 8 || floatY < -8) direction*=-1;
-    cat.style.transform = `translateY(${floatY}px)`;
-    requestAnimationFrame(floatLoop);
-}
-floatLoop();
+let follow = true, lastScroll = Date.now(), idle = null, inShow = false;
 
-// Click animations: Dizzy → Angry → Smile → Star Shower
+function updateCat(){
+  if(!follow) return;
+  const s = window.scrollY || window.pageYOffset;
+  const d = document.documentElement.scrollHeight-window.innerHeight;
+  const p = d>0?s/d:0;
+  const b = 30 + p*40;
+  const r = 30 + p*40;
+  cat.style.bottom = b + 'px';
+  cat.style.right = r + 'px';
+}
+
+function loop(){updateCat();requestAnimationFrame(loop);}
+loop();
+
+function randomBetween(a,b){return a+Math.random()*(b-a);}
+
+// click animations: dizzy → angry → smile → star shower
 cat.addEventListener("click", ()=>{
-    cat.style.transition="transform 0.2s";
-    cat.style.transform="translateY(0) rotate(-20deg)"; // lose control
+    follow=false;
+    cat.style.transform="rotate(-20deg) translateY(-10px)";
+    setTimeout(()=>{cat.style.transform="rotate(15deg) translateY(-15px)";},3000); // dizzy
+    setTimeout(()=>{cat.style.transform="rotate(-10deg) translateY(0px)";},9000); // angry
     setTimeout(()=>{
-        cat.style.transform="translateY(-10px) rotate(20deg)"; // dizzy
-    },3000);
-    setTimeout(()=>{
-        cat.style.transform="translateY(0) rotate(0deg)"; // angry
-        // can add angry visual here
-    },9000);
-    setTimeout(()=>{
-        cat.style.transform="translateY(0) rotate(0deg)"; // smile
+        cat.style.transform="rotate(0deg) translateY(0px)"; // smile
         createStars(10000);
+        follow=true;
     },15000);
 });
 
-function randomBetween(a,b){return a+Math.random()*(b-a);}
 function createStars(duration){
     const count=Math.min(80,Math.floor(window.innerWidth/8));
     const stars=[];
@@ -50,7 +53,6 @@ function createStars(duration){
     setTimeout(()=>{stars.forEach(s=>s.remove());},duration+1200);
 }
 
-// CSS keyframes for stars
 const styleSheet = document.createElement("style");
 styleSheet.textContent = `
 @keyframes fall{
