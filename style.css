@@ -17,6 +17,9 @@ nav{display:flex;gap:12px;}
 nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:#fff;text-decoration:none;opacity:0.9;}
 nav a:hover{background:rgba(255,255,255,0.03);}
 
+.info-tabs{display:flex;gap:12px;margin-top:12px;margin-bottom:16px;flex-wrap:wrap;}
+.info-tabs span{background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:12px;font-weight:600;}
+
 .section{
   padding:40px 20px;
   margin:20px auto;
@@ -38,4 +41,6 @@ nav a:hover{background:rgba(255,255,255,0.03);}
 footer{padding:18px;text-align:center;opacity:0.8;background:rgba(15,7,32,0.8);margin-top:20px;border-radius:8px;text-shadow:0 1px 3px #000;}
 
 #floating-character{
-  position:fixed;bottom:30px;right:30px;width:180px;z-index:9999;pointer-events:auto;transition:
+  position:fixed;bottom:30px;right:30px;width:180px;z-index:9999;pointer-events:auto;transition:transform 0.2s ease;
+}
+#floating-character img{width:100%;height:auto;image-rendering:pixelated;}
