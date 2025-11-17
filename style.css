@@ -1,55 +1,127 @@
-:root{
-  --bg:#0f0720;
-  --purple:#a55eea;
-  --orange:#ff6a00;
-  --accent: linear-gradient(135deg,var(--purple),var(--orange));
-  --card:#111018;
+:root {
+  --bg-dark: #0f0720;
+  --bg-gradient: linear-gradient(180deg,#0f0720,#1a081a);
+  --pink: #ff78b6;
+  --orange: #ff6a00;
+  --accent: linear-gradient(135deg,var(--pink),var(--orange));
+  --card-bg: #111018;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial;}
-body{background:linear-gradient(180deg,#0f0720,#100217,#1a081a);color:#fff;scroll-behavior:smooth;}
-header{position:sticky;top:0;background:rgba(15,7,32,0.7);backdrop-filter:blur(6px);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;z-index:50;}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.6px;}
-.logo .mark{width:36px;height:36px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#111;}
-nav{display:flex;gap:12px}
-nav a{padding:8px 12px;border-radius:8px;font-weight:600;opacity:0.9;color:#fff;text-decoration:none;}
-nav a:hover{background:rgba(255,255,255,0.03);}
-main{max-width:1000px;margin:30px auto;padding:0 18px;}
-h1{font-size:clamp(28px,6vw,48px);margin-bottom:10px;line-height:1.02;}
-p.lead{opacity:0.9;margin-bottom:18px;}
-section{padding:46px 0;border-top:1px dashed rgba(255,255,255,0.03);}
-.section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
-.section-title h2{margin:0;color:var(--orange);}
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.project{border-radius:12px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2));min-height:140px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;}
-.project:hover{transform:translateY(-6px);transition:transform .25s;}
-.project a.btn{background:var(--accent);padding:8px 12px;border-radius:10px;color:#111;text-decoration:none;margin-top:8px;font-weight:700;text-align:center;}
-.project a.facebook-btn{background:#4267B2;color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;margin-top:8px;text-align:center;font-weight:600;}
-.project a.facebook-btn:hover{background:#3b5998;}
-ul{list-style:none;padding:0;}
-ul li{margin:0.5rem 0;}
-.experience-list li,.education-list li{border-left:3px solid var(--orange);padding-left:15px;margin-bottom:15px;line-height:1.4;}
-footer{padding:18px;text-align:center;opacity:0.8;color:#fff;}
-#nyan{position:fixed;right:12px;bottom:80px;z-index:80;width:64px;height:36px;pointer-events:none;transition:transform .2s linear,right .2s linear,bottom .2s linear;}
-.star{position:fixed;z-index:70;pointer-events:none;width:8px;height:8px;border-radius:50%;opacity:0;transform:translateY(0);}
-@media(max-width:720px){.hero{flex-direction:column;align-items:flex-start} #nyan{width:48px;height:28px;bottom:60px;right:12px;}}
-/* Tap Animation for Nyan Cat */
-@keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(10deg); }
-  50% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, Arial; }
+
+body {
+  background: var(--bg-gradient);
+  color: #fff;
+  scroll-behavior: smooth;
 }
 
-#nyan.wiggle {
-  animation: wiggle 0.5s ease-in-out 3;
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(15,7,32,0.6);
+  backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
 }
 
-#nyan.dizzy {
-  transform: rotate(90deg) scale(0.9);
-  filter: brightness(0.8) blur(1px);
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
 }
+
+.logo .mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+}
+
+nav { display: flex; gap: 12px; }
+nav a {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+}
+nav a:hover { background: rgba(255,255,255,0.03); }
+
+main { max-width: 1000px; margin: 30px auto; padding: 0 18px; }
+
+section { padding: 46px 0; border-top: 1px dashed rgba(255,255,255,0.03); }
+
+.section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.section-title h2 { margin: 0; color: var(--pink); }
+
+.card, .project {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 16px;
+}
+
+.project a.btn, .project a.facebook-btn {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #111;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+.project a.facebook-btn { background: #4267B2; }
+.project a.facebook-btn:hover { background: #3b5998; }
+
+#nyan {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 120px;
+  height: 64px;
+  z-index: 80;
+  pointer-events: auto;
+  transition: transform 0.2s linear, right 0.2s linear, bottom 0.2s linear;
+}
+
+.star {
+  position: fixed;
+  z-index: 70;
+  pointer-events: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translateY(0);
+  background: #ffd966;
+}
+
+@keyframes explode { to { transform: scale(1.6) rotate(-12deg); opacity: 0; } }
+@keyframes fall { from { transform: translateY(-20vh) scale(0.6); opacity: 1; } to { transform: translateY(120vh) scale(0.2); opacity: 0; } }
+
+@keyframes wiggle { 0% { rotate:0deg; } 25% { rotate:10deg; } 50% { rotate:-10deg; } 75% { rotate:10deg; } 100% { rotate:0deg; } }
+#nyan.wiggle { animation: wiggle 0.5s ease-in-out 3; }
+
+#nyan.dizzy { transform: rotate(90deg) scale(0.9); filter: brightness(0.8) blur(1px); }
 
 .tears {
   position: fixed;
@@ -65,4 +137,9 @@ footer{padding:18px;text-align:center;opacity:0.8;color:#fff;}
 @keyframes fallTear {
   0% { opacity: 1; transform: translateY(0) translateX(0); }
   100% { opacity: 0; transform: translateY(50px) translateX(5px); }
-  }
+}
+
+/* Responsive */
+@media(max-width:720px) {
+  #nyan { width: 80px; height: 44px; bottom: 60px; right: 12px; }
+}
