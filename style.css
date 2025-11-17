@@ -33,3 +33,36 @@ footer{padding:18px;text-align:center;opacity:0.8;color:#fff;}
 #nyan{position:fixed;right:12px;bottom:80px;z-index:80;width:64px;height:36px;pointer-events:none;transition:transform .2s linear,right .2s linear,bottom .2s linear;}
 .star{position:fixed;z-index:70;pointer-events:none;width:8px;height:8px;border-radius:50%;opacity:0;transform:translateY(0);}
 @media(max-width:720px){.hero{flex-direction:column;align-items:flex-start} #nyan{width:48px;height:28px;bottom:60px;right:12px;}}
+/* Tap Animation for Nyan Cat */
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#nyan.wiggle {
+  animation: wiggle 0.5s ease-in-out 3;
+}
+
+#nyan.dizzy {
+  transform: rotate(90deg) scale(0.9);
+  filter: brightness(0.8) blur(1px);
+}
+
+.tears {
+  position: fixed;
+  width: 6px;
+  height: 10px;
+  background: #00f;
+  border-radius: 50%;
+  z-index: 90;
+  pointer-events: none;
+  animation: fallTear 1s linear forwards;
+}
+
+@keyframes fallTear {
+  0% { opacity: 1; transform: translateY(0) translateX(0); }
+  100% { opacity: 0; transform: translateY(50px) translateX(5px); }
+  }
