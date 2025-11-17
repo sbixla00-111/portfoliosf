@@ -1,302 +1,104 @@
-<!doctype html>
-
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Safa — Personal Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f0720; /* dark base */
-      --pink:#ff78b6;
-      --orange:#ff6a00; /* dark orange */
-      --card:#111018;
-      --glass: rgba(255,255,255,0.04);
-      --accent: linear-gradient(135deg,var(--pink),var(--orange));
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#0f0720 0%, #100217 60%, #1a081a 100%);color:#fff;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(15,7,32,0.6),rgba(15,7,32,0.2));backdrop-filter:blur(6px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.6px}
-    .logo .mark{width:36px;height:36px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800}
-    nav{display:flex;gap:12px}
-    nav a{padding:8px 12px;border-radius:8px;font-weight:600;opacity:0.9}
-    nav a:hover{background:rgba(255,255,255,0.03)}
-    main{max-width:1000px;margin:30px auto;padding:0 18px}/* Hero */
-.hero{min-height:64vh;display:flex;align-items:center;gap:28px}
-.hero .left{flex:1}
-h1{font-size:clamp(28px,6vw,48px);margin:0 0 10px 0;line-height:1.02}
-p.lead{opacity:0.9;margin:0 0 18px 0}
-.cta{display:flex;gap:12px}
-.btn{background:var(--accent);padding:10px 16px;border-radius:12px;font-weight:700;color:#110614;text-decoration:none}
-.secondary{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
-
-/* cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:22px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.4)}
-
-/* sections */
-section{padding:46px 0;border-top:1px dashed rgba(255,255,255,0.03)}
-.section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.section-title h2{margin:0}
-
-/* Projects */
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.project{border-radius:12px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2));min-height:140px;display:flex;flex-direction:column;justify-content:space-between}
-.project img{width:100%;border-radius:8px;height:110px;object-fit:cover}
-
-/* Contact */
-.contact-form{display:grid;grid-template-columns:1fr;gap:12px}
-input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:#fff}
-
-footer{padding:18px;text-align:center;opacity:0.7}
-
-/* Nyan cat character */
-#nyan{
-  position:fixed;right:12px;bottom:80px;z-index:80;width:88px;height:48px;pointer-events:none;transform-origin:center;transition:transform .2s linear, right .2s linear, bottom .2s linear;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safa Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0720;
+  --pink:#ff78b6;
+  --orange:#ff6a00;
+  --card:#111018;
+  --accent: linear-gradient(135deg,var(--pink),var(--orange));
 }
-#nyan .body{width:100%;height:100%;display:flex;align-items:center;gap:6px}
-.nyan-box{background:linear-gradient(90deg,var(--pink),var(--orange));padding:6px;border-radius:8px;display:flex;align-items:center;gap:8px}
-.nyan-face{width:40px;height:32px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;color:#111;font-weight:800}
-
-/* small trailing stars (hidden by default) */
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial;}
+body{background:linear-gradient(180deg,#0f0720,#100217,#1a081a);color:#fff;scroll-behavior:smooth;}
+header{position:sticky;top:0;background:rgba(15,7,32,0.6);backdrop-filter:blur(6px);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;z-index:50;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.6px;}
+.logo .mark{width:36px;height:36px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#111;}
+nav{display:flex;gap:12px}
+nav a{padding:8px 12px;border-radius:8px;font-weight:600;opacity:0.9;color:#fff;text-decoration:none;}
+nav a:hover{background:rgba(255,255,255,0.03);}
+main{max-width:1000px;margin:30px auto;padding:0 18px;}
+.hero{min-height:64vh;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero .left{flex:1;}
+h1{font-size:clamp(28px,6vw,48px);margin-bottom:10px;line-height:1.02;}
+p.lead{opacity:0.9;margin-bottom:18px;}
+.cta{display:flex;gap:12px;margin-bottom:20px;}
+.btn{background:var(--accent);padding:10px 16px;border-radius:12px;font-weight:700;color:#110614;text-decoration:none;}
+.secondary{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px;}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+section{padding:46px 0;border-top:1px dashed rgba(255,255,255,0.03);}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.section-title h2{margin:0;}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.project{border-radius:12px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.2));min-height:140px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;}
+.project:hover{transform:translateY(-6px);transition:transform .25s;}
+.project img{width:100%;border-radius:8px;height:110px;object-fit:cover;}
+.contact-form{display:grid;grid-template-columns:1fr;gap:12px;}
+input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:#fff;}
+footer{padding:18px;text-align:center;opacity:0.7;}
+#nyan{position:fixed;right:12px;bottom:80px;z-index:80;width:88px;height:48px;pointer-events:none;transition:transform .2s linear,right .2s linear,bottom .2s linear;}
 .star{position:fixed;z-index:70;pointer-events:none;width:8px;height:8px;border-radius:50%;opacity:0;transform:translateY(0);}
-
-/* explosion */
-.explode{animation:explode .5s ease forwards}
 @keyframes explode{to{transform:scale(1.6) rotate(-12deg);opacity:0}}
-
-/* star shower animation */
 @keyframes fall{from{transform:translateY(-20vh) scale(0.6);opacity:1}to{transform:translateY(120vh) scale(0.2);opacity:0}}
-
-/* small responsive touches */
-@media (max-width:720px){
-  header{padding:10px}
-  .hero{flex-direction:column;align-items:flex-start}
-  #nyan{width:64px;height:36px;bottom:60px;right:12px}
-}
-
-/* smooth scroll */
-html{scroll-behavior:smooth}
-
-/* glow accents */
-.glow{background:linear-gradient(90deg,rgba(255,120,182,0.12),rgba(255,106,0,0.12));padding:8px;border-radius:8px}
-
-/* clickable project hover */
-.project:hover{transform:translateY(-6px);transition:transform .25s}
-
-  </style>
+@media(max-width:720px){.hero{flex-direction:column;align-items:flex-start} #nyan{width:64px;height:36px;bottom:60px;right:12px;}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo"><div class="mark">SF</div><div>SAFA ELMZOUAK</div></div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <main>
-    <section id="home" class="hero">
-      <div class="left">
-        <h1>Hi, I'm Safa — a creative personal portfolio</h1>
-        <p class="lead">I design, create content and build meaningful digital experiences. Scroll to explore my projects & services.</p>
-        <div class="cta">
-          <a class="btn" href="#projects">See projects</a>
-          <a class="secondary" href="#contact">Contact me</a>
-        </div><div class="cards" style="margin-top:20px">
-      <div class="card">
-        <strong>Skills</strong>
-        <p style="margin:6px 0 0 0">Content creation · Video editing · Social campaigns · Analytics</p>
-      </div>
-      <div class="card">
-        <strong>Services</strong>
-        <p style="margin:6px 0 0 0">Social Strategy · UGC · Community Management</p>
-      </div>
-    </div>
-  </div>
-  <div class="right" style="width:320px;max-width:40%">
-    <div class="card glow">
-      <strong>Quick Contact</strong>
-      <p style="margin:8px 0">Email: <a href="mailto:selmzouak.contact@gmail.com">selmzouak.contact@gmail.com</a></p>
-      <p style="margin:8px 0">Agadir, Morocco</p>
-    </div>
-  </div>
+<header>
+<div class="logo"><div class="mark">SF</div>SAFA ELMZOUAK</div>
+<nav><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+</header>
+<main>
+<section id="home" class="hero">
+<div class="left">
+<h1>Hi, I'm Safa — Personal Portfolio</h1>
+<p class="lead">I design, create content & build meaningful digital experiences. Scroll to explore my work.</p>
+<div class="cta"><a class="btn" href="#projects">See projects</a><a class="secondary" href="#contact">Contact me</a></div>
+<div class="cards">
+<div class="card"><strong>Skills</strong><p style="margin-top:6px;">Content creation · Video editing · Social campaigns · Analytics</p></div>
+<div class="card"><strong>Services</strong><p style="margin-top:6px;">Social Strategy · UGC · Community Management</p></div>
+</div>
+</div>
 </section>
-
 <section id="about">
-  <div class="section-title"><h2>About</h2></div>
-  <div class="card">
-    <p>I'm a digital marketer & content creator passionate about building memorable digital experiences. I combine creativity with analytics to deliver measurable results.</p>
-  </div>
+<div class="section-title"><h2>About</h2></div>
+<div class="card"><p>I'm a digital marketer & content creator passionate about building memorable digital experiences. I combine creativity with analytics to deliver measurable results.</p></div>
 </section>
-
 <section id="projects">
-  <div class="section-title"><h2>Projects</h2></div>
-  <div class="projects">
-    <a class="project" href="#" onclick="return false">
-      <div>
-        <strong>Project 1</strong>
-        <p style="margin:8px 0">Social campaign with +20% engagement.</p>
-      </div>
-      <div style="opacity:0.9;font-size:13px">View</div>
-    </a>
-    <a class="project" href="#" onclick="return false">
-      <div>
-        <strong>Project 2</strong>
-        <p style="margin:8px 0">Content series for lifestyle brand.</p>
-      </div>
-      <div style="opacity:0.9;font-size:13px">View</div>
-    </a>
-    <a class="project" href="#" onclick="return false">
-      <div>
-        <strong>Project 3</strong>
-        <p style="margin:8px 0">Landing pages + conversion optimizations.</p>
-      </div>
-      <div style="opacity:0.9;font-size:13px">View</div>
-    </a>
-  </div>
+<div class="section-title"><h2>Projects</h2></div>
+<div class="projects">
+<a class="project"><strong>Project 1</strong><p>Social campaign with +20% engagement.</p></a>
+<a class="project"><strong>Project 2</strong><p>Content series for lifestyle brand.</p></a>
+<a class="project"><strong>Project 3</strong><p>Landing pages + conversion optimization.</p></a>
+</div>
 </section>
-
 <section id="contact">
-  <div class="section-title"><h2>Contact</h2></div>
-  <div class="card">
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Send via email: ' + (document.getElementById('msg').value || 'no message'))">
-      <input placeholder="Your name" required>
-      <input placeholder="Your email" required>
-      <textarea id="msg" placeholder="Message" rows="4"></textarea>
-      <div style="display:flex;gap:10px"><button class="btn" type="submit">Send</button><a class="secondary" href="/resume.pdf">Resume</a></div>
-    </form>
-  </div>
+<div class="section-title"><h2>Contact</h2></div>
+<div class="card">
+<form class="contact-form" onsubmit="event.preventDefault(); alert('Send via email: ' + (document.getElementById('msg').value || 'no message'))">
+<input placeholder="Your name" required>
+<input placeholder="Your email" required>
+<textarea id="msg" placeholder="Message" rows="4"></textarea>
+<div style="display:flex;gap:10px"><button class="btn" type="submit">Send</button><a class="secondary" href="/resume.pdf">Resume</a></div>
+</form>
+</div>
 </section>
-
-  </main>  <footer>Made with ❤️ — Safa • Scroll for fun</footer>  <!-- Nyan cat simplified SVG + logic -->  <div id="nyan" aria-hidden="true">
-    <div class="nyan-box">
-      <div class="nyan-face">😺</div>
-      <div style="min-width:60px;font-weight:700;letter-spacing:0.6px">Safa</div>
-    </div>
-  </div>  <script>
-    // Basic helpers
-    const nyan = document.getElementById('nyan');
-    let followEnabled = true;
-    let lastScroll = Date.now();
-    let idleTimer = null;
-    let inShow = false;
-
-    // Position nyan relative to scroll and viewport width
-    function updateNyanPosition(){
-      if(!followEnabled) return;
-      // follow a point near the right side, change based on scroll progress
-      const scrollY = window.scrollY || window.pageYOffset;
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docH>0 ? scrollY / docH : 0;
-      // compute bottom offset
-      const bottom = 80 - progress*40; // moves slightly up as scroll increases
-      const right = 12 + progress*80; // moves left as progress increases
-      nyan.style.bottom = (bottom) + 'px';
-      nyan.style.right = (right) + 'px';
-      nyan.style.transform = 'translateZ(0)';
-    }
-
-    // call continuously with small smoothing
-    let rafId = null;
-    function loop(){ updateNyanPosition(); rafId = requestAnimationFrame(loop); }
-    loop();
-
-    // idle detection (no scroll) -> 5s to trigger celebration
-    function onScroll(){
-      lastScroll = Date.now();
-      if(inShow) return; // don't interrupt while showing
-      // reset idle timer
-      if(idleTimer) clearTimeout(idleTimer);
-      // resume follow
-      followEnabled = true;
-      idleTimer = setTimeout(()=>{
-        // user stopped scrolling for 5s
-        triggerShow();
-      }, 5000);
-    }
-
-    window.addEventListener('scroll', onScroll, {passive:true});
-    // also start idle detection on load
-    onScroll();
-
-    function triggerShow(){
-      inShow = true;
-      followEnabled = false;
-      // play explode animation
-      nyan.classList.add('explode');
-
-      // after 600ms create star shower for 5s
-      setTimeout(()=>{
-        nyan.classList.remove('explode');
-        createStarShower(5000);
-      }, 600);
-
-      // after total 5s + 600ms, end show and resume
-      setTimeout(()=>{
-        inShow = false;
-        followEnabled = true;
-      }, 5600);
-    }
-
-    function randomBetween(a,b){ return a + Math.random()*(b-a); }
-
-    function createStarShower(duration){
-      const count = Math.min(80, Math.floor(window.innerWidth/8));
-      const stars = [];
-      for(let i=0;i<count;i++){
-        const el = document.createElement('div');
-        el.className = 'star';
-        const size = randomBetween(6,14);
-        el.style.width = size + 'px';
-        el.style.height = size + 'px';
-        // random x across viewport
-        const left = randomBetween(0, window.innerWidth);
-        el.style.left = left + 'px';
-        el.style.top = (-randomBetween(0, window.innerHeight*0.2)) + 'px';
-        // random color gold/pink/orange
-        const colors = ['#ffd966', '#ff78b6', '#ffb886'];
-        el.style.background = colors[Math.floor(Math.random()*colors.length)];
-        el.style.opacity = '1';
-        el.style.borderRadius = '50%';
-        el.style.pointerEvents = 'none';
-        el.style.zIndex = 70;
-        el.style.animation = `fall ${randomBetween(1.6,3.2)}s linear forwards`;
-        document.body.appendChild(el);
-        stars.push(el);
-      }
-      // remove after duration + buffer
-      setTimeout(()=>{ stars.forEach(s=>s.remove()); }, duration + 1200);
-    }
-
-    // minor touch: clicking hero CTA makes a small play animation for nyan
-    document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click', ()=>{
-      // do a quick hop
-      nyan.style.transition = 'transform .12s ease';
-      nyan.style.transform = 'translateY(-18px)';
-      setTimeout(()=> nyan.style.transform = 'translateY(0)', 220);
-      setTimeout(()=> nyan.style.transition = '', 400);
-    }));
-
-    // Accessibility: hide nyan on reduced-motion
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if(mq.matches){ nyan.style.display='none'; }
-
-    // small optimization: stop RAF when page hidden
-    document.addEventListener('visibilitychange', ()=>{
-      if(document.hidden){ cancelAnimationFrame(rafId); } else { loop(); }
-    });
-
-    // small initial animation: fade-in sections
-    document.querySelectorAll('section').forEach((s,i)=>{
-      s.style.opacity=0; s.style.transform='translateY(8px)';
-      setTimeout(()=>{ s.style.transition='all .6s cubic-bezier(.2,.9,.2,1)'; s.style.opacity=1; s.style.transform='translateY(0)'; }, 120 + i*80);
-    });
-
-    // Helpful: ensure nav links close on small screens - basic
-    document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{}));
-  </script></body>
+</main>
+<footer>Made with ❤️ — Safa • Scroll for fun</footer>
+<img id="nyan" src="images/pixel_safa_cat.gif" alt="Safa Nyan Cat">
+<script>
+const nyan=document.getElementById('nyan');
+let follow=true,lastScroll=Date.now(),idle=null,inShow=false;
+function updateNyan(){if(!follow)return;const s=window.scrollY||window.pageYOffset,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?s/d:0;b=80-p*40;r=12+p*80;nyan.style.bottom=b+'px';nyan.style.right=r+'px';}
+function loop(){updateNyan();requestAnimationFrame(loop);} loop();
+function onScroll(){lastScroll=Date.now();if(inShow)return;if(idle)clearTimeout(idle);follow=true;idle=setTimeout(()=>{inShow=true;follow=false;nyan.classList.add('explode');setTimeout(()=>{nyan.classList.remove('explode');createStars(5000)},600);setTimeout(()=>{inShow=false;follow=true},5600);},5000);}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+function randomBetween(a,b){return a+Math.random()*(b-a);}
+function createStars(duration){const count=Math.min(80,Math.floor(window.innerWidth/8));const stars=[];for(let i=0;i<count;i++){const el=document.createElement('div');el.className='star';const size=randomBetween(6,14);el.style.width=size+'px';el.style.height=size+'px';el.style.left=randomBetween(0,window.innerWidth)+'px';el.style.top=(-randomBetween(0,window.innerHeight*0.2))+'px';const colors=['#ffd966','#ff78b6','#ffb886'];el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.opacity='1';el.style.borderRadius='50%';el.style.pointerEvents='none';el.style.zIndex=70;el.style.animation=`fall ${randomBetween(1.6,3.2)}s linear forwards`;document.body.appendChild(el);stars.push(el);} setTimeout(()=>{stars.forEach(s=>s.remove());},duration+1200);}
+</script>
+</body>
   </html>
