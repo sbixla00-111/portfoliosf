@@ -57,3 +57,27 @@ function createStars(duration){
   }
   setTimeout(()=>{stars.forEach(s=>s.remove());},duration+1200);
 }
+nyan.addEventListener('click', () => {
+  if(nyan.classList.contains('wiggle') || nyan.classList.contains('dizzy')) return;
+
+  nyan.classList.add('wiggle');
+  setTimeout(() => {
+    nyan.classList.remove('wiggle');
+    nyan.classList.add('dizzy');
+    createTears(5); // create 5 tears
+    setTimeout(() => {
+      nyan.classList.remove('dizzy');
+    }, 3000);
+  }, 1500); // wiggle duration
+});
+
+function createTears(count) {
+  for(let i=0; i<count; i++){
+    const tear = document.createElement('div');
+    tear.className = 'tears';
+    tear.style.left = (nyan.getBoundingClientRect().left + 20 + Math.random()*20) + 'px';
+    tear.style.top = (nyan.getBoundingClientRect().top + 10 + Math.random()*10) + 'px';
+    document.body.appendChild(tear);
+    setTimeout(() => tear.remove(), 1000);
+  }
+}
